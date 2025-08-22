@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return validarFormulario()">
+        <h1>Formulario de Login</h1>
+        Usuario: <input type="text" id="usuario"><br>
+        Correo electrónico: <input type="email" id="correo"><br>
+        Contraseña: <input type="password" id="clave"><br>
+        <input type="submit" value="Ingresar">
+    </form>
+
+    <script>
+        function validarFormulario() {
+            const usuario = document.getElementById("usuario").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const clave = document.getElementById("clave").value;
+
+            if (usuario === "") {
+                alert("El usuario no puede estar vacío");
+                return false;
+            }
+
+            if (correo === "") {
+                alert("El correo electrónico no puede estar vacío");
+                return false;
+            }
+
+            const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexCorreo.test(correo)) {
+                alert("Por favor, ingresa un correo electrónico válido");
+                return false;
+            }
+
+            if (clave === "") {
+                alert("La contraseña no puede estar vacía");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
